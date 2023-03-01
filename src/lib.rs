@@ -11,7 +11,9 @@ pub extern "C" fn execute(
     payload: &Payload,
     policy_config: &Value,
 ) -> FfiFuture<Result<Payload, GatewayError>> {
-    async move { handle(payload, policy_config).await }.into_ffi()
+    let _payload = payload.clone();
+    let _policy_config = policy_config.clone();
+    async move { handle(_payload, _policy_config).await }.into_ffi()
 }
 
 // 1. Extract the configured key from policy config
