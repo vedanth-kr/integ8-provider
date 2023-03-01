@@ -8,8 +8,8 @@ use serde_json::Value;
 // The current auth policy validates if the "x_auth_key" header matches the configured value
 #[no_mangle]
 pub extern "C" fn execute(
-    payload: Payload,
-    policy_config: Value,
+    payload: &Payload,
+    policy_config: &Value,
 ) -> FfiFuture<Result<Payload, GatewayError>> {
     async move { handle(payload, policy_config).await }.into_ffi()
 }
@@ -28,7 +28,7 @@ async fn handle(payload: Payload, policy_config: Value) -> Result<Payload, Gatew
 
     let headers = payload.headers.as_ref().unwrap();
     let inbound = headers.inbound.as_ref().unwrap();
-    let auth_key_header = inbound.get("x_auth_key");
+    let auth_key_header = inbound.get("custom_auth_key");
 
     if auth_key_header.is_none() {
         return Err(GatewayError::new(
