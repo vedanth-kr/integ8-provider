@@ -9,9 +9,10 @@ jobs:
     - name: Sample Json
       id: sample_json
       run: |
-            echo "packageJson='{\"a\":\"123\"}'" >> "$GITHUB_OUTPUT"
+            echo "packageJson={\"a\":\"123\"}" >> "$GITHUB_OUTPUT"
             
     - name: Extract Json
       id: extact_json
       run: |
             echo "${{steps.sample_json.outputs.packageJson}}"
+            echo "${{ fromJson(steps.sample_json.outputs.packageJson) }}"
