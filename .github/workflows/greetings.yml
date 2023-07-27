@@ -15,4 +15,4 @@ jobs:
       id: extact_json
       run: |
             echo "${{steps.sample_json.outputs.packageJson}}"
-            echo "${{ fromJson(steps.sample_json.outputs.packageJson) }}"
+            echo "${{ fromJson(steps.sample_json.outputs.packageJson).a }}"
