@@ -1,0 +1,17 @@
+name: Greetings
+
+on: [pull_request_target, issues]
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Sample Json
+      id: sample_json
+      run: |
+            echo "::set-output name=packageJson={"a":"123"}"
+            
+    - name: Extract Json
+      id: extact_json
+      run: |
+            echo "${steps.set_var.outputs.packageJson}"
