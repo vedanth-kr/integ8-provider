@@ -14,4 +14,4 @@ jobs:
     - name: Extract Json
       id: extact_json
       run: |
-            echo "${steps.sample_json.outputs.packageJson}"
+            echo "${{steps.sample_json.outputs.packageJson}}"
