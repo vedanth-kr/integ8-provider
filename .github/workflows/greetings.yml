@@ -9,9 +9,9 @@ jobs:
     - name: Sample Json
       id: sample_json
       run: |
-            echo "::set-output name=packageJson={"a":"123"}"
+            echo "::set-output name=packageJson::{"a":"123"}"
             
     - name: Extract Json
       id: extact_json
       run: |
-            echo "${steps.set_var.outputs.packageJson}"
+            echo "${steps.sample_json.outputs.packageJson}"
