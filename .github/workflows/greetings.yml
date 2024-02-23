@@ -7,7 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add Mask
-        run: echo "::add-mask::${{github.run_number}}"
+        run: | 
+           ACCESS_TOKEN=12345678
+           echo "::add-mask::$ACCESS_TOKEN"
+           echo ACCESS_TOKEN=$ACCESS_TOKEN >> $GITHUB_ENV 
       - name: echo a secret  
-        run: echo "your secret token is ${{github.run_number}}"
+        run: echo "your secret token is $ACCESS_TOKEN"
             
