@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add Mask
-        run: echo "::add-mask::verySecretToken"
+        run: echo "::add-mask::github.run_number"
       - name: echo a secret  
-        run: echo "your secret token is verySecretToken"
+        run: echo "your secret token is ${{github.run_number}}"
             
