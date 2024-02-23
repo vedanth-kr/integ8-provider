@@ -8,8 +8,8 @@ jobs:
     steps:
       - name: Add Mask
         run: | 
-           ACCESS_TOKEN=12345678
            echo "::add-mask::$ACCESS_TOKEN"
+           ACCESS_TOKEN=12345678
            echo ACCESS_TOKEN=$ACCESS_TOKEN >> $GITHUB_ENV 
       - name: echo a secret  
         run: echo "your secret token is $ACCESS_TOKEN"
