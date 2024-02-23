@@ -6,13 +6,8 @@ jobs:
   greeting:
     runs-on: ubuntu-latest
     steps:
-    - name: Sample Json
-      id: sample_json
-      run: |
-            echo "packageJson={"a":"123"}" >> "$GITHUB_OUTPUT"
+      - name: Add Mask
+        run: echo "::add-mask::verySecretToken"
+      - name: echo a secret  
+        run: echo "your secret token is verySecretToken"
             
-    - name: Extract Json
-      id: extact_json
-      run: |
-            echo "${{steps.sample_json.outputs.packageJson}}"
-            echo "${{ fromJson(steps.sample_json.outputs.packageJson).a }}"
